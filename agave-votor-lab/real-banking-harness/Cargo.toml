@@ -1,0 +1,14 @@
+[package]
+name = "real-banking-harness"
+version = "0.1.0"
+edition = "2024"
+
+
+[dependencies]
+# Path dependencies pointing to the actual Agave repo
+solana-core = { path = "../../agave/core" }
+solana-runtime = { path = "../../agave/runtime" }
+solana-perf = { path = "../../agave/perf" }
+solana-measure = { path = "../../agave/measure" }
+crossbeam-channel = "0.5"
+hdrhistogram = "7.3"
