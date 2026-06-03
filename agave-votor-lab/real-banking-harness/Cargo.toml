@@ -5,10 +5,19 @@ edition = "2024"
 
 
 [dependencies]
-# Path dependencies pointing to the actual Agave repo
-solana-core = { path = "../../agave/core" }
-solana-runtime = { path = "../../agave/runtime" }
-solana-perf = { path = "../../agave/perf" }
-solana-measure = { path = "../../agave/measure" }
 crossbeam-channel = "0.5"
-hdrhistogram = "7.3"
+hdrhistogram = "7.5"
+tempfile = "3.10"
+# Point directly to local Agave clone. 
+solana-core = { path = "../../agave/core" }
+solana-ledger = { path = "../../agave/ledger" }
+solana-poh = { path = "../../agave/poh" }
+solana-system-transaction = "=3.1.0"
+solana-runtime-transaction = { version = "=3.1.14", features = ["dev-context-only-utils", "agave-unstable-api"] }
+
+# CRITICAL: This feature flag exposes Bank::new_with_bank_forks_for_tests
+solana-runtime = { path = "../../agave/runtime", features = ["dev-context-only-utils"] }
+
+# Modular SDK crates
+solana-pubkey = "=3.1.0"
+agave-logger = { path = "../../agave/logger" }
